@@ -5,7 +5,7 @@ package scalatags.generic
   * Trait that contains the contents of the `Tags` object, so they can be mixed
   * in to other objects if needed.
   */
-trait Tags[Builder, Output <: FragT, FragT] extends Util[Builder, Output, FragT]{
+trait Tags[Builder, Output <: FragT, FragT] extends UtilMember[Builder, Output, FragT]{
 
 
 

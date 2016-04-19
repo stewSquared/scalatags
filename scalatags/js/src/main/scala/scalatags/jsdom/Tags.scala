@@ -4,7 +4,10 @@ package jsdom
 import acyclic.file
 import org.scalajs.dom
 import scalatags.generic.Util
+
 trait Tags extends generic.Tags[dom.Element, dom.Element, dom.Node]{
+  import util._
+
   // Root Element
   lazy val html = "html".tag[dom.html.Html]
   // Document Metadata

@@ -7,7 +7,8 @@ import scalatags._
 /**
  * Created by haoyi on 6/2/14.
  */
-trait Util[Builder, Output <: FragT, FragT] extends LowPriUtil[Builder, Output, FragT]{
+trait UtilMember[Builder, Output <: FragT, FragT] { val util: Util[Builder, Output, FragT] }
+trait Util[Builder, Output <: FragT, FragT] extends LowPriUtil[Builder, Output, FragT] {
 
   type ConcreteHtmlTag[T <: Output] <: TypedTag[Builder, T, FragT]
   def makeAbstractTypedTag[T <: Output](tag: String, void: Boolean, namespaceConfig: Namespace): ConcreteHtmlTag[T]

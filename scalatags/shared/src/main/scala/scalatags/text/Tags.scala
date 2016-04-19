@@ -2,6 +2,8 @@ package scalatags
 package text
 import acyclic.file
 trait Tags extends generic.Tags[Builder, String, String]{
+  import util._
+
   // Root Element
   lazy val html = "html".tag[String]
   // Document Metadata

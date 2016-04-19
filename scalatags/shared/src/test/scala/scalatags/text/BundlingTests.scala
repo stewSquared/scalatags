@@ -19,7 +19,13 @@ object BundlingTests extends TestSuite{
             </body>
         </html>
                    """
-    object CustomBundle extends Text.Cap with text.Tags with text.Tags2 with Text.Aggregate{
+    object CustomBundle
+      extends Text.Cap
+      with text.Tags
+      with text.Tags2
+      with Text.CapMember
+      with Text.Aggregate{
+
       object st extends Text.Cap with Text.Styles with Text.Styles2
       object at extends Text.Cap with Text.Attrs
     }

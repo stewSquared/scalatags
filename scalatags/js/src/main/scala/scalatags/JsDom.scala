@@ -20,27 +20,30 @@ object JsDom
   with Aliases[dom.Element, dom.Element, dom.Node]{
 
   object attrs extends JsDom.Cap with Attrs
-  object tags extends JsDom.Cap with jsdom.Tags
+  object tags extends CapMember with jsdom.Tags
   object tags2 extends JsDom.Cap with jsdom.Tags2
   object styles extends JsDom.Cap with Styles
   object styles2 extends JsDom.Cap with Styles2
   object svgTags extends JsDom.Cap with jsdom.SvgTags
   object svgAttrs extends JsDom.Cap with SvgAttrs
 
-  object implicits extends Aggregate with DataConverters
+  object implicits
+    extends Cap
+    with DataConverters
+    with Aggregate
 
   object all
     extends Cap
     with Attrs
     with Styles
-    with jsdom.Tags
+    with jsdom.Tags with CapMember
     with DataConverters
     with Aggregate
     with LowPriorityImplicits
 
   object short
     extends Cap
-    with jsdom.Tags
+    with jsdom.Tags with CapMember
     with DataConverters
     with Aggregate
     with AbstractShort
@@ -49,6 +52,9 @@ object JsDom
     object * extends Cap with Attrs with Styles
   }
 
+  trait CapMember extends UtilMember {
+    object util extends Cap
+  }
 
   trait Aggregate extends generic.Aggregate[dom.Element, dom.Element, dom.Node]{
     implicit class ApplyTags(e: dom.Element){

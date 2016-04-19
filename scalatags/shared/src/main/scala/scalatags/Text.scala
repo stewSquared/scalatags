@@ -16,7 +16,7 @@ object Text
   extends generic.Bundle[text.Builder, String, String]
   with Aliases[text.Builder, String, String]{
   object attrs extends Text.Cap with Attrs
-  object tags extends Text.Cap with text.Tags
+  object tags extends CapMember with text.Tags
   object tags2 extends Text.Cap with text.Tags2
   object styles extends Text.Cap with Styles
   object styles2 extends Text.Cap with Styles2
@@ -24,19 +24,22 @@ object Text
   object svgTags extends Text.Cap with text.SvgTags
   object svgAttrs extends Text.Cap with SvgAttrs
 
-  object implicits extends Aggregate with DataConverters
+  object implicits
+    extends Cap
+    with DataConverters
+    with Aggregate
 
   object all
     extends Cap
     with Attrs
     with Styles
-    with text.Tags
+    with text.Tags with CapMember
     with DataConverters
     with Aggregate
 
   object short
     extends Cap
-    with text.Tags
+    with text.Tags with CapMember
     with DataConverters
     with Aggregate
     with AbstractShort{
@@ -44,7 +47,11 @@ object Text
     object * extends Cap with Attrs with Styles
   }
 
-  trait Cap extends Util{ self =>
+  trait CapMember extends UtilMember {
+    object util extends Cap
+  }
+
+  trait Cap extends Util { self =>
     type ConcreteHtmlTag[T <: String] = TypedTag[T]
 
     protected[this] implicit def stringAttrX = new GenericAttr[String]
