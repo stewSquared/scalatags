@@ -12,7 +12,10 @@ class ExampleTests[Builder, Output <: FragT, FragT](bundle: Bundle[Builder, Outp
       import bundle.short._
       div(
         p(*.color:="red", *.fontSize:=64.pt)("Big Red Text"),
-        img(*.href:="www.imgur.com/picture.jpg")
+        img(*.href:="www.imgur.com/picture.jpg"),
+        ul(
+          for (item <- "List of items".split(" ")) yield li(item)
+        )
       )
     }
     ,
@@ -22,7 +25,10 @@ class ExampleTests[Builder, Output <: FragT, FragT](bundle: Bundle[Builder, Outp
       import bundle.implicits._
       div(
         p(css.color:="red", css.fontSize:=64.pt)("Big Red Text"),
-        img(attr.href:="www.imgur.com/picture.jpg")
+        img(attr.href:="www.imgur.com/picture.jpg"),
+        ul(
+          for (item <- "List of items".split(" ")) yield li(item)
+        )
       )
     }
     ,
