@@ -15,7 +15,8 @@ import scala.language.dynamics
  * A trait for global attributes that are applicable to any HTML5 element. All traits that define Attrs should
  * derive from this trait since all groupings of attributes should include these global ones.
  */
-trait GlobalAttrs[Builder, Output <: FragT, FragT] extends Util[Builder, Output, FragT] {
+trait GlobalAttrs[Builder, Output <: FragT, FragT] extends UtilMember[Builder, Output, FragT] {
+  import util._
 
   /**
    * Specifies a shortcut key to activate/focus an element
@@ -158,17 +159,19 @@ trait GlobalAttrs[Builder, Output <: FragT, FragT] extends Util[Builder, Output,
   lazy val translate	= "translate".emptyAttr
 }
 
-trait SharedEventAttrs[Builder, Output<:FragT, FragT] extends Util[Builder, Output, FragT] {
+trait SharedEventAttrs[Builder, Output<:FragT, FragT] extends UtilMember[Builder, Output, FragT] {
   /**
    * Script to be run when an error occurs when the file is being loaded
-   */
+    */
+  import util._
   lazy val onerror = "onerror".attr
 }
 
 /**
  * Clipboard Events
  */
-trait ClipboardEventAttrs[Builder, Output<:FragT, FragT] extends Util[Builder, Output, FragT] {
+trait ClipboardEventAttrs[Builder, Output<:FragT, FragT] extends UtilMember[Builder, Output, FragT] {
+  import util._
   /**
    * Fires when the user copies the content of an element
    */
@@ -189,7 +192,7 @@ trait ClipboardEventAttrs[Builder, Output<:FragT, FragT] extends Util[Builder, O
  * <embed>, <img>, <object>, and <video>.
  */
 trait MediaEventAttrs[Builder, Output<:FragT, FragT] extends SharedEventAttrs[Builder, Output, FragT] {
-
+  import util._
   /**
    * Script to be run on abort
    */
@@ -284,6 +287,7 @@ trait MediaEventAttrs[Builder, Output<:FragT, FragT] extends SharedEventAttrs[Bu
  * Miscellaneous Events
  */
 trait MiscellaneousEventAttrs[Builder, Output<:FragT, FragT] extends SharedEventAttrs[Builder, Output, FragT] {
+  import util._
   /**
    * Fires when a <menu> element is shown as a context menu
    */
@@ -299,6 +303,7 @@ trait MiscellaneousEventAttrs[Builder, Output<:FragT, FragT] extends SharedEvent
  *
  */
 trait WindowEventAttrs[Builder, Output<:FragT, FragT] extends SharedEventAttrs[Builder, Output, FragT] {
+  import util._
   /**
    * The load event fires at the end of the document loading process. At this
    * point, all of the objects in the document are in the DOM, and all the
@@ -365,7 +370,8 @@ trait WindowEventAttrs[Builder, Output<:FragT, FragT] extends SharedEventAttrs[B
  * Form Events that are triggered by actions inside an HTML form. However, these events apply to almost all HTML
  * elements but are most commonly used in form elements.
  */
-trait FormEventAttrs[Builder, Output<:FragT, FragT] extends Util[Builder, Output, FragT] {
+trait FormEventAttrs[Builder, Output<:FragT, FragT] extends UtilMember[Builder, Output, FragT] {
+  import util._
   /**
    * The blur event is raised when an element loses focus.
    *
@@ -432,7 +438,8 @@ trait FormEventAttrs[Builder, Output<:FragT, FragT] extends Util[Builder, Output
 /**
  * Keyboard Events - triggered by user action son the keyboard or similar user actions
  */
-trait KeyboardEventAttrs[Builder, Output<:FragT, FragT] extends Util[Builder, Output, FragT] {
+trait KeyboardEventAttrs[Builder, Output<:FragT, FragT] extends UtilMember[Builder, Output, FragT] {
+  import util._
   /**
    * The keydown event is raised when the user presses a keyboard key.
    *
@@ -460,7 +467,8 @@ trait KeyboardEventAttrs[Builder, Output<:FragT, FragT] extends Util[Builder, Ou
 /**
  * Mouse Events: triggered by a mouse, or similar user actions.
  */
-trait MouseEventAttrs[Builder, Output<: FragT, FragT] extends Util[Builder, Output, FragT] {
+trait MouseEventAttrs[Builder, Output<: FragT, FragT] extends UtilMember[Builder, Output, FragT] {
+  import util._
   /**
    * The click event is raised when the user clicks on an element. The click
    * event will occur after the mousedown and mouseup events.
@@ -555,6 +563,7 @@ trait MouseEventAttrs[Builder, Output<: FragT, FragT] extends Util[Builder, Outp
  * likely the most complex of any element in HTML5.
  */
 trait InputAttrs[Builder, Output <: FragT, FragT] extends GlobalAttrs[Builder, Output, FragT] {
+  import util._
 
   /**
    * The URI of a program that processes the information submitted via the form.
@@ -820,6 +829,7 @@ trait Attrs[Builder, Output <: FragT, FragT] extends InputAttrs[Builder, Output,
   with WindowEventAttrs[Builder, Output, FragT]
   with FormEventAttrs[Builder, Output, FragT]
 {
+  import util._
   /**
    * This is the single required attribute for anchors defining a hypertext
    * source link. It indicates the link target, either a URL or a URL fragment.

@@ -16,14 +16,14 @@ import scalatags.text.Builder
 object Text
   extends generic.Bundle[text.Builder, String, String]
   with Aliases[text.Builder, String, String]{
-  object attrs extends Text.Cap with Attrs
+  object attrs extends CapMember with Attrs
   object tags extends CapMember with text.Tags
-  object tags2 extends Text.Cap with text.Tags2
-  object styles extends Text.Cap with Styles
-  object styles2 extends Text.Cap with Styles2
+  object tags2 extends CapMember with text.Tags2
+  object styles extends Cap with Styles
+  object styles2 extends Cap with Styles2
 
-  object svgTags extends Text.Cap with text.SvgTags
-  object svgAttrs extends Text.Cap with SvgAttrs
+  object svgTags extends CapMember with text.SvgTags
+  object svgAttrs extends CapMember with SvgAttrs
 
   object implicits
     extends Cap
@@ -45,7 +45,7 @@ object Text
     with Aggregate
     with AbstractShort{
 
-    object * extends Cap with Attrs with Styles
+    object * extends Cap with Attrs with Styles with CapMember
   }
 
   trait CapMember extends UtilMember {

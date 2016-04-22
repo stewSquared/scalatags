@@ -5,6 +5,8 @@ import org.scalajs.dom
 import org.scalajs.dom.html
 import scalatags.generic.Util
 trait Tags2 extends generic.Tags2[dom.Element, dom.Element, dom.Node]{
+  import util._
+
    // Document Metadata
    lazy val title = "title".tag[html.Title]
    lazy val style = "style".tag[html.Style]

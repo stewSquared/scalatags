@@ -23,13 +23,13 @@ object JsDom
   extends generic.Bundle[dom.Element, dom.Element, dom.Node]
   with Aliases[dom.Element, dom.Element, dom.Node]{
 
-  object attrs extends JsDom.Cap with Attrs
+  object attrs extends CapMember with Attrs
   object tags extends CapMember with jsdom.Tags
-  object tags2 extends JsDom.Cap with jsdom.Tags2
-  object styles extends JsDom.Cap with Styles
-  object styles2 extends JsDom.Cap with Styles2
-  object svgTags extends JsDom.Cap with jsdom.SvgTags
-  object svgAttrs extends JsDom.Cap with SvgAttrs
+  object tags2 extends CapMember with jsdom.Tags2
+  object styles extends Cap with Styles
+  object styles2 extends Cap with Styles2
+  object svgTags extends CapMember with jsdom.SvgTags
+  object svgAttrs extends CapMember with SvgAttrs
 
   object implicits
     extends Cap
@@ -53,7 +53,7 @@ object JsDom
     with AbstractShort
     with LowPriorityImplicits{
 
-    object * extends Cap with Attrs with Styles
+    object * extends Cap with Attrs with Styles with CapMember
   }
 
   trait CapMember extends UtilMember {

@@ -5,7 +5,7 @@ package scalatags.generic
   * Contains HTML tags which are used less frequently. These are generally
   * imported individually as needed.
   */
-trait Tags2[Builder, Output <: FragT, FragT] extends Util[Builder, Output, FragT]{
+trait Tags2[Builder, Output <: FragT, FragT] extends UtilMember[Builder, Output, FragT]{
 
    // Document Metadata
    /**

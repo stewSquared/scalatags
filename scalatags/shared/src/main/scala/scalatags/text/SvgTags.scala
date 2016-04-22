@@ -2,6 +2,8 @@ package scalatags
 package text
 import acyclic.file
 trait SvgTags extends generic.SvgTags[Builder, String, String]{
+  import util._
+
   lazy val altGlyph = "altGlyph".tag
   lazy val altGlyphDef = "altGlyphDef".tag
   lazy val altGlyphItem = "altGlyphItem".tag

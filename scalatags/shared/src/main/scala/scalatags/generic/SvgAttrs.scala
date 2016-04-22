@@ -13,7 +13,8 @@ package generic
 import acyclic.file
 
 
-trait SvgAttrs[Builder, Output <: FragT, FragT] extends Util[Builder, Output, FragT] {
+trait SvgAttrs[Builder, Output <: FragT, FragT] extends UtilMember[Builder, Output, FragT] {
+  import util._
 
   /**
    * This attribute defines the distance from the origin to the top of accent characters,

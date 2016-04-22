@@ -4,6 +4,8 @@ import acyclic.file
 import org.scalajs.dom
 import scalatags.generic.{Namespace, Util}
 trait SvgTags extends generic.SvgTags[dom.Element, dom.Element, dom.Node]{
+  import util._
+
   implicit lazy val svgNamespaceConfig = Namespace.svgNamespaceConfig
   lazy val altGlyph = "altGlyph".tag[dom.svg.Element]
   lazy val altGlyphDef = "altGlyphDef".tag[dom.svg.Element]
