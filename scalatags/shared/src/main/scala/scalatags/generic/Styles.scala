@@ -11,15 +11,18 @@ package scalatags
 package generic
 import acyclic.file
 
-trait StyleMisc[Builder, Output <: FragT, FragT] extends Util[Builder, Output, FragT] {
-
+trait StyleMisc[Builder, Output <: FragT, FragT]
+    extends UtilMember[Builder, Output, FragT]
+    with Util[Builder, Output, FragT] {
+  //import util._
+  //import util.stringStyleX
   /**
    * A Style that takes any value of type T as a parameter and has an auto value
    */
   private[scalatags]
   class AutoStyle(jsName: String, cssName: String)
   extends Style(jsName, cssName) {
-    lazy val auto = this := "auto"
+    lazy val auto = this.:=("auto")(util.stringStyleX)
   }
 
   private[scalatags]

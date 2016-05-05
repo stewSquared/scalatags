@@ -15,7 +15,7 @@ trait Util[Builder, Output <: FragT, FragT] extends LowPriUtil[Builder, Output, 
   type ConcreteHtmlTag[T <: Output] <: TypedTag[Builder, T, FragT]
   def makeAbstractTypedTag[T <: Output](tag: String, void: Boolean, namespaceConfig: Namespace): ConcreteHtmlTag[T]
   protected[this] implicit def stringAttrX: AttrValue[Builder, String]
-  protected[this] implicit def stringStyleX: StyleValue[Builder, String]
+  implicit def stringStyleX: StyleValue[Builder, String]
   protected[this] implicit def stringPixelStyleX: PixelStyleValue[Builder, String]
 
   /**

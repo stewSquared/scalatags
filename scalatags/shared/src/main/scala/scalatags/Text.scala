@@ -19,8 +19,8 @@ object Text
   object attrs extends CapMember with Attrs
   object tags extends CapMember with text.Tags
   object tags2 extends CapMember with text.Tags2
-  object styles extends Cap with Styles
-  object styles2 extends Cap with Styles2
+  object styles extends Cap with CapMember with Styles
+  object styles2 extends Cap with CapMember with Styles2
 
   object svgTags extends CapMember with text.SvgTags
   object svgAttrs extends CapMember with SvgAttrs
